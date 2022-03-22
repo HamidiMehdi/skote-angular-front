@@ -82,7 +82,7 @@
                 </ul>
               </div>
               <div class="mt-4 text-center">
-                <a href="#" class="text-muted">
+                <a [routerLink]="['/reset-password']" class="text-muted">
                   <i class="mdi mdi-lock mr-1"></i>
                   Vous avez oublié votre mot de passe ?
                 </a>
@@ -90,9 +90,11 @@
             </div>
           </div>
         </div>
-
-        <!-- FOOTER -->
-
+        <app-footer
+          [textButton]="'Créez votre compte !'"
+          [url]="'/register'"
+          [text]="'Vous n\'avez pas de compte ?'">
+        </app-footer>
       </div>
     </div>
   </div>

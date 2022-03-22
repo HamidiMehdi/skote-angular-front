@@ -4,12 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {SecurityRoutingModule} from "./security-routing.module";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
