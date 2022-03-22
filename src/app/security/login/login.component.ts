@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import * as ROUTES from '../../routes';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  routes = {
+    resetPassword: ROUTES.RESET_PASSWORD,
+    register: ROUTES.REGISTER
+  };
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
 }

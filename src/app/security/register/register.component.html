@@ -1,1 +1,80 @@
-<p>register works!</p>
+<div class="account-pages my-5 pt-sm-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="card overflow-hidden">
+          <div class="bg-primary bg-soft">
+            <div class="row">
+              <div class="col-7">
+                <div class="text-primary p-4">
+                  <h5 class="text-primary">Skote</h5>
+                  <p>Incrivez-vous gratuitement pour avoir un compte.</p>
+                </div>
+              </div>
+              <div class="col-5 align-self-end">
+                <img src="assets/img/profile-img.png" alt="" class="img-fluid"/>
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <div class="auth-logo">
+              <div class="avatar-md profile-user-wid mb-4">
+                <span class="avatar-title rounded-circle bg-light">
+                    <img src="assets/img/logo.svg" alt="" class="rounded-circle" height="34"/>
+                </span>
+              </div>
+            </div>
+            <div class="p-2">
+              <form class="form-horizontal" onSubmit={handleSubmit}>
+                <div class="mb-3">
+                  <label htmlFor="lastname" class="form-label">Nom</label>
+                  <input type="lastname" class="form-control" id="lastname" placeholder="Entrez votre nom"/>
+                  <ul class="parsley-errors-list filled">
+                    <li class="parsley-required">Champ obligatoire</li>
+                  </ul>
+                </div>
+                <div class="mb-3">
+                  <label htmlFor="firstname" class="form-label">Prénom</label>
+                  <input type="firstname" class="form-control" id="firstname" placeholder="Entrez votre prénom" />
+                  <ul class="parsley-errors-list filled">
+                    <li class="parsley-required">Champ obligatoire</li>
+                  </ul>
+                </div>
+                <div class="mb-3">
+                  <label htmlFor="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Entrez votre email" />
+                  <ul class="parsley-errors-list filled">
+                    <li class="parsley-required">Champ obligatoire</li>
+                  </ul>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Mot de passe</label>
+                  <div class="input-group auth-pass-inputgroup">
+                    <input type="password" class="form-control" id="input_password"
+                           placeholder="Entrez votre mot de passe" aria-label="Mot de passe"
+                           aria-describedby="password-addon"
+                    />
+                    <button class="btn btn-light " type="button" id="password-addon">
+                      <i class="mdi mdi-eye-outline"></i>
+                    </button>
+                  </div>
+                  <ul class="parsley-errors-list filled">
+                    <li class="parsley-required">Champ obligatoire</li>
+                  </ul>
+                </div>
+                <div class="mt-3 d-grid">
+                  <button class="btn btn-primary waves-effect waves-light" type="submit" disabled>
+                    <i class="bx bx-loader bx-spin font-size-16 align-middle me-2"></i>
+                    S'enregistrer
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+      </div>
+    </div>
+  </div>
+</div>
