@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {catchError, map, Observable} from "rxjs";
 import {Token} from "../../entity/token";
+import {User} from "../../entity/user";
 
 @Injectable({
   providedIn: 'root'
@@ -30,15 +31,26 @@ export class AuthService {
     })
   }
 
-  public me(token: string | null): Observable<any> {
+  public me(token: string | null): Observable<User> {
     const headers: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': 'Bearer ' + token,
       'Accept': 'application/ld+json'
     });
 
-    return this.http.get(environment.api + '/me', {
-      headers: headers
-    })
+    return this.http
+      .get(environment.api + '/me', {headers: headers})
+      .pipe(
+        map((response: any) => {
+          return new User(
+            response.id,
+            response.firstname,
+            response.lastname,
+            response.email,
+            new Date(response.createdAt),
+            new Date(response.updatedAt)
+          )
+        })
+      )
   }
 }

@@ -1,26 +1,26 @@
 export class Token {
 
-  private token: string
-  private refreshToken: string
+  private _token: string
+  private _refreshToken: string
 
   constructor(token: string, refreshToken: string) {
-    this.token = token
-    this.refreshToken = refreshToken
+    this._token = token
+    this._refreshToken = refreshToken
   }
 
-  getToken(): string {
-    return this.token
+  public get token(): string {
+    return this._token;
   }
 
-  setToken(token: string): void {
-    this.token = token;
+  public set token(value: string) {
+    this._token = value;
   }
 
-  getRefreshToken(): string {
-    return this.refreshToken
+  public get refreshToken(): string {
+    return this._refreshToken;
   }
 
-  setRefreshToken(refreshToken: string): void {
-    this.refreshToken = refreshToken;
+  public set refreshToken(value: string) {
+    this._refreshToken = value;
   }
 }
