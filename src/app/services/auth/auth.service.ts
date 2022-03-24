@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {catchError, map, Observable} from "rxjs";
+import {map, Observable, switchMap} from "rxjs";
 import {Token} from "../../entity/token";
 import {User} from "../../entity/user";
 
@@ -13,11 +13,12 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  public login(email: string, password: string): Observable<Token> {
+  public login(email: string, password: string): Observable<User> {
     return this.http
       .post(environment.api + '/login', {username: email, password: password})
       .pipe(
-        map((response: any) => new Token(response.token, response.refresh_token))
+        map((response: any) => new Token(response.token, response.refresh_token)),
+        switchMap((token: Token) => this.me(token.token))
       )
   }
 

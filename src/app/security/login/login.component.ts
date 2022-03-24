@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../../services/auth/auth.service";
-import {Token} from "../../entity/token";
 import {User} from "../../entity/user";
 
 @Component({
@@ -37,10 +36,8 @@ export class LoginComponent implements OnInit {
     this.userNotFound = false
     if (this.formIsValid()) {
       this.formSubmited = true;
-      this.authService.login(this.form.email, this.form.password).subscribe((token: Token) => {
-          this.authService.me(token.token).subscribe((user: User) => {
-            console.log(user)
-          })
+      this.authService.login(this.form.email, this.form.password).subscribe((user: User) => {
+          console.log(user)
           this.formSubmited = false;
         }, (error) => {
           if (error.status === 401) {
