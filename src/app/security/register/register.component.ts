@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleService: Title) {
+  }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Skote | Inscription')
   }
 
 }

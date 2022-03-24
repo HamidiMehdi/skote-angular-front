@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import {SecurityRoutingModule} from "./security-routing.module";
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FooterComponent } from './footer/footer.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule,
-    SecurityRoutingModule
+    SecurityRoutingModule,
+    FormsModule
   ]
 })
 export class SecurityModule { }

@@ -25,38 +25,52 @@
                   </span>
               </div>
             </div>
-            <!-- ALERTE UTILISATEUR NON TROUVE -->
-            <div class="alert alert-warning" role="alert">
+            <div *ngIf="userNotFound" class="alert alert-warning" role="alert">
               L'identifiant et/ou le mot de passe sont incorrects.
             </div>
-
             <div class="p-2">
-              <form class="form-horizontal" onSubmit={handleSubmit}>
+              <form #form="ngForm" class="form-horizontal" (ngSubmit)="onSubmit(form)">
                 <div class="mb-3">
                   <label htmlFor="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="Entrez votre email"/>
-                  <ul class="parsley-errors-list filled">
-                    <li class="parsley-required">Champ obligatoire</li>
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Entrez votre email"
+                    required
+                    ngModel
+                  />
+                  <ul *ngIf="formError.email" class="parsley-errors-list filled">
+                    <li class="parsley-required">{{ formError.email }}</li>
                   </ul>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Mot de passe</label>
                   <div class="input-group auth-pass-inputgroup">
-                    <input type="password" class="form-control" id="input_password"
-                           placeholder="Entrez votre mot de passe" aria-label="Mot de passe"
-                           aria-describedby="password-addon"
+                    <input
+                      #inputPassword
+                      type="password"
+                      name="password"
+                      class="form-control"
+                      id="input_password"
+                      placeholder="Entrez votre mot de passe"
+                      aria-label="Mot de passe"
+                      aria-describedby="password-addon"
+                      ngModel
+                      required
                     />
-                    <button class="btn btn-light " type="button" id="password-addon">
+                    <button class="btn btn-light " type="button" id="password-addon" (click)="showPassword(inputPassword)">
                       <i class="mdi mdi-eye-outline"></i>
                     </button>
                   </div>
-                  <ul class="parsley-errors-list filled">
-                    <li class="parsley-required">Champ obligatoire</li>
+                  <ul *ngIf="formError.password" class="parsley-errors-list filled">
+                    <li class="parsley-required">{{ formError.password }}</li>
                   </ul>
                 </div>
                 <div class="mt-3 d-grid">
-                  <button class="btn btn-primary waves-effect waves-light" type="submit" disabled=true>
-                    <i class="bx bx-loader bx-spin font-size-16 align-middle me-2"></i>
+                  <button class="btn btn-primary waves-effect waves-light" type="submit" [disabled]="formSubmited">
+                    <i *ngIf="formSubmited" class="bx bx-loader bx-spin font-size-16 align-middle me-2"></i>
                     Se connecter
                   </button>
                 </div>
